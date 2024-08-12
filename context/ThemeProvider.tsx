@@ -1,46 +1,42 @@
-
-import { Mode } from "fs";
-import { createContext, useEffect, useState,useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 interface ThemeContextType {
-    mode: string,
-    setMode: (mode:string) => void;
+    mode:string,
+    setMode: (mode: string) => void
 }
+
 const ThemeContext = createContext<ThemeContextType | undefined >(undefined);
 
-export function ThemeProvider ({children} : {children : React.ReactNode}){
+export const ThemeProvider = ({children} : {children : React.ReactNode})=>{
     const [mode, setMode] = useState('');
 
-    const handleThemeChange = ()=>{
-        if (mode === 'dark') {
-            setMode('light');
-            document.documentElement.classList.add('light')
+
+    const handleThemeChnage = ()=>{
+        if (mode === 'dark'){
+            setMode("light");
+
+            document.documentElement.classList.add('light');
         }
         else{
-            setMode('dark')
+            setMode('dark');
             document.documentElement.classList.add('dark')
         }
-
     }
-    
+
     useEffect(()=>{
-        handleThemeChange();
+        handleThemeChnage();
     },[mode])
 
+
     return (
-        <ThemeContext.Provider value = {{mode, setMode}}>
-            {children}
-        </ThemeContext.Provider>
+    <ThemeContext.Provider value = {{mode, setMode}}>
+    {children}
+    </ThemeContext.Provider>
     )
 }
 
-export function useTheme() {
+export function useTheme (){
     const context = useContext(ThemeContext);
-
-    if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider')
-    } 
-
-
-    return context;
+    return context
 }
+
