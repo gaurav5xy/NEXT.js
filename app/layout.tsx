@@ -5,10 +5,13 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+
+// import '../style/theme.css'
 import './globals.css'
 
 import {Nunito} from 'next/font/google';
 import { Metadata } from 'next';
+import { ThemeProvider } from '@/context/ThemeProvider';
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -32,14 +35,8 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${nunito.variable}`}>
-          {/* <SignedOut>
-            <SignInButton />
-          </SignedOut> */}
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
-        </body>
+           {children}
+         </body>
       </html>
     </ClerkProvider>
   )

@@ -10,7 +10,7 @@ const ThemeContext = createContext<ThemeContextType | undefined >(undefined);
 export const ThemeProvider = ({children} : {children : React.ReactNode})=>{
     const [mode, setMode] = useState('');
 
-
+   
     const handleThemeChnage = ()=>{
         if (mode === 'dark'){
             setMode("light");
@@ -23,9 +23,9 @@ export const ThemeProvider = ({children} : {children : React.ReactNode})=>{
         }
     }
 
-    useEffect(()=>{
-        handleThemeChnage();
-    },[mode])
+    // useEffect(()=>{
+    //     handleThemeChnage();
+    // },[mode])
 
 
     return (
@@ -35,8 +35,11 @@ export const ThemeProvider = ({children} : {children : React.ReactNode})=>{
     )
 }
 
-export function useTheme (){
+export function useTheme() {
     const context = useContext(ThemeContext);
-    return context
+    if (context === undefined) {
+        throw new Error('useTheme must be used within a ThemeProvider');
+    }
+    return context;
 }
 
