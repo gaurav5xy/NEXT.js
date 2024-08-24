@@ -12,20 +12,20 @@ export const ThemeProvider = ({children} : {children : React.ReactNode})=>{
 
    
     const handleThemeChnage = ()=>{
-        if (mode === 'dark'){
-            setMode("light");
+        if (localStorage.theme == 'dark' || (!("theme" in localStorage) && window.matchMedia("(prefers-color-schema: dark)").matches)){
+            setMode("dark");
 
-            document.documentElement.classList.add('light');
+            document.documentElement.classList.add('dark');
         }
         else{
-            setMode('dark');
-            document.documentElement.classList.add('dark')
+            setMode('light');
+            document.documentElement.classList.remove('dark')
         }
     }
 
-    // useEffect(()=>{
-    //     handleThemeChnage();
-    // },[mode])
+    useEffect(()=>{
+        handleThemeChnage();
+    },[mode])
 
 
     return (
