@@ -37,7 +37,7 @@ const Theme = () => {
                 />
               )}
             </NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute right-[-3rem] mt-3 w-full min-w-[120px] max-w-[100 px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300">
+            <NavigationMenuContent className="absolute right-[-3rem] mt-3 w-full min-w-[120px] max-w-[100px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300">
               {themes.map((item) => (
                 <NavigationMenuItem
                   className="list-none flex items-center gap-2 px-4 py-2 cursor-pointer w-full max-w-[180px]"
