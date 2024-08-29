@@ -6,22 +6,22 @@ export interface Theme {
 }
 
 export const themes: Theme[] = [
-    {value: 'light', label: 'Light', icon: '/assets/icons/sun.svg'},
-    {value: 'dark', label: 'Dark', icon: '/assets/icons/moon.svg'},
-    {value: 'system', label: 'System', icon: '/assets/icons/computer.svg'},
+    { value: 'light', label: 'Light', icon: '/assets/icons/sun.svg' },
+    { value: 'dark', label: 'Dark', icon: '/assets/icons/moon.svg' },
+    { value: 'system', label: 'System', icon: '/assets/icons/computer.svg' },
 ];
 
-export interface Tags{
-    tag: string;
+export interface Tags {
+    name: string;
     count: number;
 }
 
 export const tags: Tags[] = [
-    {tag: "NEXTJS", count: 32},
-    {tag: "TEST", count: 19},
-    {tag: "REACT", count: 18},
-    {tag: "CSS", count: 13},
-    {tag: "TAILWIND", count: 8},
+    { name: "NEXTJS", count: 32 },
+    { name: "TEST", count: 19 },
+    { name: "REACT", count: 18 },
+    { name: "CSS", count: 13 },
+    { name: "TAILWIND", count: 8 },
 ]
 
 // Define the interface for a question
