@@ -4,15 +4,17 @@ import Link from "next/link";
 
 // Define the structure of the tag object
 interface Tag {
+  id: number;
   name: string;
   count: number;
 }
 
 interface Props {
   tag: Tag;
+  showcount: boolean;
 }
 
-const Tag = ({ tag }: Props) => {
+const Tag = ({ tag, showcount }: Props) => {
   return (
     <div className="mt-7 flex flex-col gap-4">
       <Link
@@ -26,7 +28,9 @@ const Tag = ({ tag }: Props) => {
         >
           {tag.name}
         </Badge>
-        <p className="body-medium text-dark500_light700">{tag.count}</p>
+        {
+          showcount && <p className="body-medium text-dark500_light700">{tag.count}</p>
+        }
       </Link>
     </div>
   );

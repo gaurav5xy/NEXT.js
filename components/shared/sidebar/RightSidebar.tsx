@@ -31,7 +31,7 @@ const RightSidebar = () => {
         <div className=" mt-16">
           <h1 className="h3-bold text-dark200_light900">Popular Tags</h1>
           {tags.map((item) => {
-            return <Tag key={item.name} tag={item} />;
+            return <Tag key={item.name} tag={item} showcount={true} />;
           })}
         </div>
       </div>

@@ -12,16 +12,17 @@ export const themes: Theme[] = [
 ];
 
 export interface Tags {
+    id: number;
     name: string;
     count: number;
 }
 
 export const tags: Tags[] = [
-    { name: "NEXTJS", count: 32 },
-    { name: "TEST", count: 19 },
-    { name: "REACT", count: 18 },
-    { name: "CSS", count: 13 },
-    { name: "TAILWIND", count: 8 },
+    { id:1, name: "NEXTJS", count: 32 },
+    { id:2, name: "TEST", count: 19 },
+    { id:3, name: "REACT", count: 18 },
+    { id:4, name: "CSS", count: 13 },
+    { id:5, name: "TAILWIND", count: 8 },
 ]
 
 // Define the interface for a question

@@ -1,5 +1,5 @@
 export const HomeSearchFilter = [
-    {name: "Newest", value: "question"},
+    {name: "Newest", value: "newest"},
     {name: "Recommended", value: "recommended"},
     {name: "Frequent", value: "frequent"},
     {name: "Unanswer", value: "unanswer"}
