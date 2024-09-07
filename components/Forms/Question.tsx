@@ -1,4 +1,5 @@
 "use client";
+import { createQuestion } from "@/lib/actions/question.action";
 import React, { KeyboardEvent, useCallback, useRef, useState } from "react";
 import { useForm, Controller, ControllerRenderProps } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,6 +45,7 @@ const Question: React.FC = () => {
   const onSubmit = async (values: QuestionFormData) => {
     setIsSubmitting(true);
     try {
+      await createQuestion({})
       console.log("Submitting values: ", values);
     } catch (error) {
       console.error("Failed to submit form: ", error);
@@ -236,3 +238,5 @@ const Question: React.FC = () => {
 };
 
 export default Question;
+
+
