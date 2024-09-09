@@ -18,6 +18,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import * as z from "zod";
+import { useRouter, usePathname } from "next/navigation";
 
 const type: any = "create";
 // Define your schema with Zod
@@ -27,11 +28,18 @@ const QuestionSchema = z.object({
   tags: z.array(z.string().max(15, "Tag must be less than 15 characters")),
 });
 
+interface Props { 
+  mongoUserId : string
+}
+
 type QuestionFormData = z.infer<typeof QuestionSchema>;
 
-const Question: React.FC = () => {
+const Question = ({mongoUserId}:Props) => {
   const editorRef = useRef<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const router = useRouter()
+  const pathname = usePathname();
 
   const form = useForm<QuestionFormData>({
     resolver: zodResolver(QuestionSchema),
@@ -45,7 +53,15 @@ const Question: React.FC = () => {
   const onSubmit = async (values: QuestionFormData) => {
     setIsSubmitting(true);
     try {
-      await createQuestion({})
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path:pathname
+      });
+      
+      router.push('/')
       console.log("Submitting values: ", values);
     } catch (error) {
       console.error("Failed to submit form: ", error);

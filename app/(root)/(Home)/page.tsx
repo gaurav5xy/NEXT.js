@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import QuestionSearch from "@/components/shared/search/QuestionSearch";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,12 @@ import { HomeSearchFilter } from "@/constant/filter";
 import HomeFilter from "@/components/Home/HomeFilter";
 import NoQuestion from "@/components/NoQuestion";
 import QuestionCard from "@/components/cards/QuestionCard";
+import { getQuestion } from "@/lib/actions/question.action";
 
-export default function Home() {
+
+export default async function Home() {
+  const result = await getQuestion({})
+  
   const questions = [
     {
       id: 1,
@@ -86,14 +90,14 @@ export default function Home() {
       <HomeFilter />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length >= 1 ? (
-          questions.map((question) => (
+        {result.questions.length >= 1 ? (
+          result.questions.map((question) => (
             <QuestionCard
               key={question.id}
               id={question.id}
               title={question.title}
               tags={question.tags}
-              auther={question.auther}
+              author={question.author}
               views={question.views}
               answer={question.answer}
               upvotes={question.upvotes}

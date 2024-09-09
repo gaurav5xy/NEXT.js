@@ -9,7 +9,7 @@ interface TagType {
   name: string;
   count: number;
 }
-interface Auther {
+interface Author {
   id: number;
   name: string;
 }
@@ -17,7 +17,7 @@ interface QuestionCardProps {
   id: number;
   title: string;
   tags: TagType[];
-  auther: Auther;
+  author: Author;
   views: string;
   answer: string;
   upvotes: string;
@@ -28,13 +28,13 @@ const QuestionCard = ({
   id,
   title,
   tags,
-  auther,
+  author,
   views,
   answer,
   upvotes,
   createdAt,
 }: QuestionCardProps) => {
-
+  
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
@@ -59,9 +59,9 @@ const QuestionCard = ({
         <Matric
           imgURL="/assets/icons/avatar.svg"
           alt="User"
-          value={auther.name}
+          value={author?.name}
           title={`| asked ${getTimeStamp(createdAt)}`}
-          href={`/profile/${auther.id}`}
+          href={`/profile/${author?.id}`}
           isAuthor={true}
           textStyle="body-medium text-dark400_light700"
         />
